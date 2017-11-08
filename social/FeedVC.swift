@@ -20,6 +20,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         tableView.delegate = self
         tableView.dataSource = self
         
+        //reference the database
+        //DataService.ds is a reference to the singleton, REF_Post is a reference to the post object in firebase
+        DataService.ds.REF_POST.observe(.value, with: { (snapshot) in
+            print(snapshot.value)  //prints values from database
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
